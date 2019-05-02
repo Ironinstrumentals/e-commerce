@@ -1,14 +1,103 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+HTML {
+    display: flex;
+    width: 100%;
+    height:100%;
 }
+Body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: dodgerblue;
+    color: white;
+}
+.Main {
+    color: black;
+    height: 100%;
+}
+.fa-star {
+    color: gold;
+}
+.card {
+    display: flex;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    flex-wrap: wrap;
+}
+.Items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    align-items: center;
+    align-self: center;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-top: 50px;
+}
+.Main {
+    background-color: dodgerblue;
+}
+.Item {
+    display: flex;
+    flex-direction: row;
+}
+.card {
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.card:hover {
+    /*transform: scale(1.025, 1.025);*/
+}
+.card-img-top {
+    width: 100%;
+    height: 25vh;
+    object-fit: scale-down;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    padding: 10px;
+}
+.card-img-top:hover {
+    transform: scale(1.05, 1.05);
+}
+.iflex {
+    align-self: center;
+    display: inline-flex;
+    flex-direction: row;
+}
+.CBody {
+    display: flex;
+    flex-direction: column;
+}
+.SuperDiv {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    display: flex;
+    justify-items: flex-end;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+.Rating {
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-items: flex-end;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    margin-top: 10px;
+}
+.card-text {
+    margin-top: 10px;
+}
+.Switcher {
+    color: white;
 }
