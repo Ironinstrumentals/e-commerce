@@ -6,9 +6,6 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {ItemCreator} from "./ItemCreator"
-import CardGroup from "react-bootstrap/CardGroup";
-import CardDeck from "react-bootstrap/CardDeck";
-import CardColumns from "react-bootstrap/CardColumns";
 import RedirectJS from './RedirectJS';
 import {
     BrowserRouter as Router,
@@ -16,48 +13,9 @@ import {
     Link
 } from  'react-router-dom';
 import { Switch } from "react-router-dom";
-import Card from "react-bootstrap/Card";
+import {ItemFilter} from './ItemCreator';
 
 class App extends Component {
-    state = {
-        Products: [],
-    };
-    renderItems() {
-        return this.state.Products.map(product => {
-            return(
-                <div className="Item" key={product.id}>
-                    <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
-                        <Card.Img variant="top" src={product.img} />
-                        <Card.Body className="CBody">
-                            <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                            <Card.Text>
-                                {product.description}
-                            </Card.Text>
-                            <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                            <div className="SuperDiv">
-                                <Card.Text className="iflex">
-                                    ${product.price}
-                                </Card.Text>
-                                <Button className="iflex" variant="primary" id={product.title} >Add to Cart</Button>
-                            </div>
-                        </Card.Body>
-                    </Card>
-                </div>
-            )
-        })
-    };
-    componentDidMount() {
-        fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products')
-            .then((response) => {
-                return response.json();
-            })
-            .then((items) => {
-                this.setState({
-                    Products: items
-                });
-                //console.log(this.state.Products)
-            });
-    }
     render() {
         return (
             <div className="Main">
@@ -93,12 +51,12 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" render={() => (<div className="Items"><ItemCreator /></div>)}/>
                     <Route exact path="/Home" render={() => (<div className="Items"><ItemCreator /></div>)}/>
-                    <Route exact path="/Category/TV" render={() => (<div>Category: TV</div>)} />
-                    <Route exact path="/Category/Headphones" render={() => (<div>Category: Headphones</div>)} />
-                    <Route exact path="/Category/Phones" render={() => (<div>Category: Phones</div>)} />
-                    <Route exact path="/Category/Cameras" render={() => (<div>Category: Cameras</div>)} />
-                    <Route exact path="/Category/Watchess" render={() => (<div>Category: Watches</div>)} />
-                    <Route exact path="/Category/Kitchen_Appliances" render={() => (<div>Category: Kitchen Appliances</div>)} />
+                    <Route exact path="/Category/TV" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Headphones" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Phones" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Cameras" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Watches" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Kitchen_Appliances" render={() => (<div className="Items"><ItemFilter /></div>)} />
                     {/*<Route exact path="/Cart"  component={Cart} />*/}
                     <Route path="/company/page" render={() => (<div>Page</div>)}/>
 

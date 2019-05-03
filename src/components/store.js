@@ -1,39 +1,23 @@
-function createStore(reducer) {
-    fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products')
-        .then((response) => {
-            return response.json();
-        })
-        .then((items) => {
-            this.setState({
-                Products: items
-            });
-            console.log(this.state.Products)
-        });
+import React from 'react';
+import { createStore } from 'redux';
 
-    const listeners = [];
+const defaultState = {
+    Products: null,
+    Filtered: null,
+    TV: null,
+    Headphones: null,
+    Phones: null,
+    Cameras: null,
+    Watches: null,
+    Kitchen_Appliances: null,
+    Cart: null
+};
 
-    const subscribe = (listener) => {
-        listeners.push(listener)
-    };
-
-    const getState = () => (state);
-
-    const dispatch = (action) => {
-        state = reducer(state, action);
-        listeners.forEach(l => l())
-    };
-
-    return {
-        subscribe,
-        getState,
-        dispatch
+function reducer(state, action){
+    if (action.type === 'Filter') {
+        return state;
     }
 }
 
-function reducer(state, action) {
-
-}
-
 const store = createStore(reducer);
-
-export default store
+export default store;
