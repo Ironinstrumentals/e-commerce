@@ -14,20 +14,34 @@ import {
 } from  'react-router-dom';
 import { Switch } from "react-router-dom";
 import {ItemFilter} from './ItemCreator';
+import {Cart} from './Cart';
+import store from './store';
 
 class App extends Component {
+    componentDidMount() {
+        store.subscribe(() => this.forceUpdate());
+        fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products')
+            .then((response) => {
+                return response.json();
+            })
+            .then((items) => {
+                store.dispatch({type: 'SET_PRODUCTS', items: items})
+            });
+
+
+    };
     render() {
         return (
             <div className="Main">
                 <Router>
                 <Navbar bg="light" expand="lg" sticky="top">
-                    <Navbar.Brand to="Home">E-Commerce Template</Navbar.Brand>
+                    <Navbar.Brand to="/">E-Commerce Template</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
 
-                            <Link className='nav-link' to="/Home">Home</Link>
-                            {/*<Link className='nav-link' to="/Cart">Cart</Link>*/}
+                            <Link className='nav-link' to="/">Home</Link>
+
                             <NavDropdown title="Categories" id="basic-nav-dropdown">
                                 <Link className='dropdown-item' to="/Category/TV" key='TV'>TV</Link>
                                 <Link className='dropdown-item' to="/Category/Headphones" key='Headphones'>Headphones</Link>
@@ -36,13 +50,14 @@ class App extends Component {
                                 <Link className='dropdown-item' to="/Category/Watches">Watches</Link>
                                 <Link className='dropdown-item' to="/Category/Kitchen_Appliances">Kitchen Appliances</Link>
                             </NavDropdown>
+                            <Link className='nav-link' to="/Cart">Cart</Link>
 
                         </Nav>
                         <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="filter"/>
-                            <Router>
-                            <Link to={'/Filter/' + this.innerText}><Button variant="outline-primary">Search</Button></Link>
-                            </Router>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="filter" />
+
+                            <Link to={'/Filter/' + this.value}><Button variant="outline-primary">Search</Button></Link>
+
                         </Form>
                     </Navbar.Collapse>
                 </Navbar>
@@ -57,7 +72,7 @@ class App extends Component {
                     <Route exact path="/Category/Cameras" render={() => (<div className="Items"><ItemFilter /></div>)} />
                     <Route exact path="/Category/Watches" render={() => (<div className="Items"><ItemFilter /></div>)} />
                     <Route exact path="/Category/Kitchen_Appliances" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    {/*<Route exact path="/Cart"  component={Cart} />*/}
+                    <Route exact path="/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
                     <Route path="/company/page" render={() => (<div>Page</div>)}/>
 
                     <Route path="/RedirectJS" component={RedirectJS} />

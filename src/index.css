@@ -140,3 +140,32 @@ Body {
     100% {
         -webkit-transform: scale(1);
         opacity: 1; } }
+
+.CartBox {
+    width: 100%;
+    text-align: center;
+}
+.CartItem{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.CartDiv {
+    margin-right: 30px;
+}
+
+.CartIMG {
+    display: flex;
+    height: 50px;
+    width: 50px;
+    object-fit: scale-down;
+    margin-right: 30px;
+}
+
+.CartIMG:hover {
+    transform: scale(1.05, 1.05);
+}
