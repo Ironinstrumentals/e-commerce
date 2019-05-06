@@ -42,13 +42,11 @@ export class ItemCreator extends Component {
         return store.getState().Products.map(product => {
             return(
                 <div className="Item" key={product.id}>
-                <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                     <Card.Img variant="top" src={product.img} />
                     <Card.Body className="CBody">
                         <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                        <Card.Text>
-                            {product.description}
-                        </Card.Text>
+                        <Button className="iflex" variant="primary">Details</Button>
                         <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                         <div className="SuperDiv">
                         <Card.Text className="iflex">
@@ -164,13 +162,11 @@ export class ItemFilter extends Component {
                 return this.state.TV.map(product => {
                     return(
                         <div className="Item" key={product.id}>
-                            <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                 <Card.Img variant="top" src={product.img} />
                                 <Card.Body className="CBody">
                                     <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                    <Card.Text>
-                                        {product.description}
-                                    </Card.Text>
+                                    <Button className="iflex" variant="primary">Details</Button>
                                     <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                     <div className="SuperDiv">
                                         <Card.Text className="iflex">
@@ -188,13 +184,11 @@ export class ItemFilter extends Component {
                     return this.state.Headphones.map(product => {
                         return(
                             <div className="Item" key={product.id}>
-                                <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                     <Card.Img variant="top" src={product.img} />
                                     <Card.Body className="CBody">
                                         <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                        <Card.Text>
-                                            {product.description}
-                                        </Card.Text>
+                                        <Button className="iflex" variant="primary">Details</Button>
                                         <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                         <div className="SuperDiv">
                                             <Card.Text className="iflex">
@@ -212,13 +206,11 @@ export class ItemFilter extends Component {
                         return this.state.Phones.map(product => {
                             return(
                                 <div className="Item" key={product.id}>
-                                    <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                                    <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                         <Card.Img variant="top" src={product.img} />
                                         <Card.Body className="CBody">
                                             <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                            <Card.Text>
-                                                {product.description}
-                                            </Card.Text>
+                                            <Button className="iflex" variant="primary">Details</Button>
                                             <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                             <div className="SuperDiv">
                                                 <Card.Text className="iflex">
@@ -236,13 +228,11 @@ export class ItemFilter extends Component {
                             return this.state.Cameras.map(product => {
                                 return(
                                     <div className="Item" key={product.id}>
-                                        <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                                        <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                             <Card.Img variant="top" src={product.img} />
                                             <Card.Body className="CBody">
                                                 <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                <Card.Text>
-                                                    {product.description}
-                                                </Card.Text>
+                                                <Button className="iflex" variant="primary">Details</Button>
                                                 <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                                 <div className="SuperDiv">
                                                     <Card.Text className="iflex">
@@ -260,13 +250,11 @@ export class ItemFilter extends Component {
                                 return this.state.Watches.map(product => {
                                     return(
                                         <div className="Item" key={product.id}>
-                                            <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                                 <Card.Img variant="top" src={product.img} />
                                                 <Card.Body className="CBody">
                                                     <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                    <Card.Text>
-                                                        {product.description}
-                                                    </Card.Text>
+                                                    <Button className="iflex" variant="primary">Details</Button>
                                                     <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                                     <div className="SuperDiv">
                                                         <Card.Text className="iflex">
@@ -284,13 +272,11 @@ export class ItemFilter extends Component {
                                     return this.state.Kitchen_Appliances.map(product => {
                                         return(
                                             <div className="Item" key={product.id}>
-                                                <Card style={{ width: '18rem', height: '725px'}} id={product.id}>
+                                                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
                                                     <Card.Img variant="top" src={product.img} />
                                                     <Card.Body className="CBody">
                                                         <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                        <Card.Text>
-                                                            {product.description}
-                                                        </Card.Text>
+                                                        <Button className="iflex" variant="primary">Details</Button>
                                                         <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
                                                         <div className="SuperDiv">
                                                             <Card.Text className="iflex">
