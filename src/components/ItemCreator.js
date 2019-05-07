@@ -26,6 +26,7 @@ export class ItemCreator extends Component {
         Kitchen_Appliances: Kitchen_Appliances,
 
     };
+
     AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title === value) {
@@ -34,7 +35,7 @@ export class ItemCreator extends Component {
             }
         }
         //store.dispatch({type: 'ADD_TO_CART', });
-        console.log(store.getState());
+        //console.log(store.getState());
     };
     renderItems() {
         this.itemPusher();
