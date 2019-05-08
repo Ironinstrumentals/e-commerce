@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/es/FormControl";
-import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {ItemCreator} from "./ItemCreator"
@@ -16,8 +14,13 @@ import { Switch } from "react-router-dom";
 import {ItemFilter} from './ItemCreator';
 import {Cart} from './Cart';
 import store from './store';
+import {DetailsModal} from "./DetailsModal";
+
+
+
 
 class App extends Component {
+
     componentDidMount() {
         store.subscribe(() => this.forceUpdate());
         fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products')
@@ -43,21 +46,18 @@ class App extends Component {
                             <Link className='nav-link' to="/">Home</Link>
 
                             <NavDropdown title="Categories" id="basic-nav-dropdown">
-                                <Link className='dropdown-item' to="/Category/TV" key='TV'>TV</Link>
-                                <Link className='dropdown-item' to="/Category/Headphones" key='Headphones'>Headphones</Link>
-                                <Link className='dropdown-item' to="/Category/Phones">Phones</Link>
-                                <Link className='dropdown-item' to="/Category/Cameras">Cameras</Link>
-                                <Link className='dropdown-item' to="/Category/Watches">Watches</Link>
-                                <Link className='dropdown-item' to="/Category/Kitchen_Appliances">Kitchen Appliances</Link>
+                                <Link className='dropdown-item' to="/Category/TV/" key='TV'>TV</Link>
+                                <Link className='dropdown-item' to="/Category/Headphones/" key='Headphones'>Headphones</Link>
+                                <Link className='dropdown-item' to="/Category/Phones/">Phones</Link>
+                                <Link className='dropdown-item' to="/Category/Cameras/">Cameras</Link>
+                                <Link className='dropdown-item' to="/Category/Watches/">Watches</Link>
+                                <Link className='dropdown-item' to="/Category/Kitchen_Appliances/">Kitchen Appliances</Link>
                             </NavDropdown>
-                            <Link className='nav-link' to="/Cart">Cart</Link>
+
 
                         </Nav>
                         <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" id="filter" />
-
-                            <Link to={'/Filter/' + this.value}><Button variant="outline-primary">Search</Button></Link>
-
+                            <Link className='nav-link' to="/Cart">Cart</Link>
                         </Form>
                     </Navbar.Collapse>
                 </Navbar>
@@ -66,15 +66,23 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" render={() => (<div className="Items"><ItemCreator /></div>)}/>
                     <Route exact path="/Home" render={() => (<div className="Items"><ItemCreator /></div>)}/>
-                    <Route exact path="/Category/TV" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Headphones" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Phones" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Cameras" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Watches" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Kitchen_Appliances" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/TV/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Headphones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Phones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Cameras/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Watches/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                    <Route exact path="/Category/Kitchen_Appliances/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+
+                    <Route exact path="/Category/TV/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                    <Route exact path="/Category/Headphones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                    <Route exact path="/Category/Phones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                    <Route exact path="/Category/Cameras/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                    <Route exact path="/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                    <Route exact path="/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+
                     <Route exact path="/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
                     <Route path="/company/page" render={() => (<div>Page</div>)}/>
-
+                    <Route exact path="/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
                     <Route path="/RedirectJS" component={RedirectJS} />
                     <Route render={() => ( //ALWAYS PUT THIS LAST
                         <div><h3>ERROR 404: Not Found</h3>

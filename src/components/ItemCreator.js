@@ -3,8 +3,9 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import store from './store';
 
+import { Link } from 'react-router-dom';
 
-let Filtered = [];
+
 let TV = [];
 let Headphones = [];
 let Phones = [];
@@ -17,7 +18,6 @@ export class ItemCreator extends Component {
 
     state = {
         Products: [],
-        Filtered: Filtered,
         TV: TV,
         Headphones: Headphones,
         Phones: Phones,
@@ -26,11 +26,22 @@ export class ItemCreator extends Component {
         Kitchen_Appliances: Kitchen_Appliances,
 
     };
+    static handleShow() {
+        let modal = true;
+        store.dispatch({type: 'MODAL', modal});
+    }
 
-    AddToCart(value) {
+    static setModal(title, description, price, rating) {
+        store.dispatch({type: 'ITEM_TITLE', title});
+        store.dispatch({type: 'ITEM_DESCRIPTION', description});
+        store.dispatch({type: 'ITEM_PRICE', price});
+        store.dispatch({type: 'ITEM_RATING', rating});
+        ItemCreator.handleShow();
+    }
+
+    static AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title === value) {
-
                 store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
             }
         }
@@ -47,13 +58,14 @@ export class ItemCreator extends Component {
                     <Card.Img variant="top" src={product.img} />
                     <Card.Body className="CBody">
                         <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                        <Button className="iflex" variant="primary">Details</Button>
-                        <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+
+
                         <div className="SuperDiv">
                         <Card.Text className="iflex">
                             ${product.price}
                         </Card.Text>
-                        <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
                         </div>
                     </Card.Body>
                 </Card>
@@ -111,7 +123,6 @@ export class ItemCreator extends Component {
 export class ItemFilter extends Component {
     state = {
         Products: [],
-        Filtered: Filtered,
         TV: TV,
         Headphones: Headphones,
         Phones: Phones,
@@ -127,8 +138,8 @@ export class ItemFilter extends Component {
                 store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
             }
         }
-
-        console.log(store.getState());
+        //store.dispatch({type: 'ADD_TO_CART', });
+        //console.log(store.getState());
     };
 
     renderItems(category) {
@@ -161,112 +172,111 @@ export class ItemFilter extends Component {
 
             if (category === 'TV') {
                 return this.state.TV.map(product => {
-                    return(
-                        <div className="Item" key={product.id}>
-                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                <Card.Img variant="top" src={product.img} />
-                                <Card.Body className="CBody">
-                                    <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                    <Button className="iflex" variant="primary">Details</Button>
-                                    <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                                    <div className="SuperDiv">
-                                        <Card.Text className="iflex">
-                                            ${product.price}
-                                        </Card.Text>
-                                        <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
+                                return(
+                <div className="Item" key={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body className="CBody">
+                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
+                        <Link to='Details' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+
+                        <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
+                        <div className="SuperDiv">
+                        <Card.Text className="iflex">
+                            ${product.price}
+                        </Card.Text>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
                         </div>
-                    )
+                    </Card.Body>
+                </Card>
+                </div>
+            )
                 })
             } else {
                 if (category === 'Headphones') {
                     return this.state.Headphones.map(product => {
-                        return(
-                            <div className="Item" key={product.id}>
-                                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                    <Card.Img variant="top" src={product.img} />
-                                    <Card.Body className="CBody">
-                                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                        <Button className="iflex" variant="primary">Details</Button>
-                                        <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                                        <div className="SuperDiv">
-                                            <Card.Text className="iflex">
-                                                ${product.price}
-                                            </Card.Text>
-                                            <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            </div>
-                        )
+                                    return(
+                <div className="Item" key={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body className="CBody">
+                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+
+
+                        <div className="SuperDiv">
+                        <Card.Text className="iflex">
+                            ${product.price}
+                        </Card.Text>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+                </div>
+            )
                     })
                 } else {
                     if (category === 'Phones') {
                         return this.state.Phones.map(product => {
-                            return(
-                                <div className="Item" key={product.id}>
-                                    <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                        <Card.Img variant="top" src={product.img} />
-                                        <Card.Body className="CBody">
-                                            <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                            <Button className="iflex" variant="primary">Details</Button>
-                                            <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                                            <div className="SuperDiv">
-                                                <Card.Text className="iflex">
-                                                    ${product.price}
-                                                </Card.Text>
-                                                <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
-                                            </div>
-                                        </Card.Body>
-                                    </Card>
-                                </div>
-                            )
+                                        return(
+                <div className="Item" key={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body className="CBody">
+                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                        <div className="SuperDiv">
+                        <Card.Text className="iflex">
+                            ${product.price}
+                        </Card.Text>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+                </div>
+            )
                         })
                     } else {
                         if (category === 'Cameras') {
                             return this.state.Cameras.map(product => {
-                                return(
-                                    <div className="Item" key={product.id}>
-                                        <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                            <Card.Img variant="top" src={product.img} />
-                                            <Card.Body className="CBody">
-                                                <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                <Button className="iflex" variant="primary">Details</Button>
-                                                <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                                                <div className="SuperDiv">
-                                                    <Card.Text className="iflex">
-                                                        ${product.price}
-                                                    </Card.Text>
-                                                    <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
-                                                </div>
-                                            </Card.Body>
-                                        </Card>
-                                    </div>
-                                )
+                                            return(
+                <div className="Item" key={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body className="CBody">
+                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                        <div className="SuperDiv">
+                        <Card.Text className="iflex">
+                            ${product.price}
+                        </Card.Text>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+                </div>
+            )
                             })
                         } else {
                             if (category === 'Watches') {
                                 return this.state.Watches.map(product => {
-                                    return(
-                                        <div className="Item" key={product.id}>
-                                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                                <Card.Img variant="top" src={product.img} />
-                                                <Card.Body className="CBody">
-                                                    <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                    <Button className="iflex" variant="primary">Details</Button>
-                                                    <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
-                                                    <div className="SuperDiv">
-                                                        <Card.Text className="iflex">
-                                                            ${product.price}
-                                                        </Card.Text>
-                                                        <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
-                                                    </div>
-                                                </Card.Body>
-                                            </Card>
-                                        </div>
-                                    )
+                                                return(
+                <div className="Item" key={product.id}>
+                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
+                    <Card.Img variant="top" src={product.img} />
+                    <Card.Body className="CBody">
+                        <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                        <div className="SuperDiv">
+                        <Card.Text className="iflex">
+                            ${product.price}
+                        </Card.Text>
+                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+                </div>
+            )
                                 })
                             } else {
                                 if (category === 'Kitchen_Appliances') {
@@ -277,13 +287,12 @@ export class ItemFilter extends Component {
                                                     <Card.Img variant="top" src={product.img} />
                                                     <Card.Body className="CBody">
                                                         <Card.Title id={product.title + 'Title'}>{product.title}</Card.Title>
-                                                        <Button className="iflex" variant="primary">Details</Button>
-                                                        <Card.Text className="Rating"><i className="fas fa-star"></i> {product.rating}</Card.Text>
+                                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
                                                         <div className="SuperDiv">
                                                             <Card.Text className="iflex">
                                                                 ${product.price}
                                                             </Card.Text>
-                                                            <Button className="iflex" variant="primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart</Button>
+                                                            <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
                                                         </div>
                                                     </Card.Body>
                                                 </Card>
@@ -307,6 +316,7 @@ export class ItemFilter extends Component {
 
         return(
             this.renderItems()
+
         );
     }
 }
