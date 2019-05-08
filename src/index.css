@@ -148,7 +148,7 @@ Body {
 }
 
 .CartDiv {
-    margin-right: 30px;
+    margin-right: 80px;
 }
 
 .CartIMG {
@@ -224,4 +224,15 @@ Body {
     padding: 6px;
     align-self: center;
     justify-self: center;
+}
+
+.Checkout {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.CartSelect {
+    margin-right: 10px;
+
 }

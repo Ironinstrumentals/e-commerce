@@ -42,7 +42,11 @@ export class ItemCreator extends Component {
     static AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title === value) {
-                store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
+                if (store.getState().Cart.includes(store.getState().Products[i])) {
+                    alert('Already in your Cart!');
+                } else {
+                    store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
+                }
             }
         }
         //store.dispatch({type: 'ADD_TO_CART', });
