@@ -52,7 +52,7 @@ Body {
     margin-right: 5px;
 }
 .card:hover {
-    /*transform: scale(1.025, 1.025);*/
+    transform: scale(1.025, 1.025);
 }
 .card-img-top {
     width: 100%;
@@ -76,19 +76,18 @@ Body {
 }
 .SuperDiv {
     position: absolute;
-    width: 100%;
-    margin-top: 155px;
+    width: 130%;
+    margin-top: 140px;
     display: flex;
     justify-items: flex-end;
     justify-content: space-evenly;
     align-items: flex-end;
     align-content: flex-end;
     align-self: center;
-    padding: 2px;
 }
 
 .card-text {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .Switcher {
     color: black;
@@ -245,4 +244,23 @@ Body {
     display: flex;
     height: 100%;
     align-items: flex-end;
+}
+.BorderLine {
+    margin-top: 5px;
+    height: 0;
+    width: 100%;
+    border-bottom: solid lightgray 1px;
+}
+.SuperItem {
+    display: flex;
+    padding: 0 5% 0 5%;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    margin-left: -50%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
 }
