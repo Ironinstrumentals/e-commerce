@@ -15,6 +15,7 @@ import {ItemFilter} from './ItemCreator';
 import {Cart} from './Cart';
 import store from './store';
 import {DetailsModal} from "./DetailsModal";
+import NavLink from "react-bootstrap/NavLink";
 
 
 
@@ -93,6 +94,15 @@ class App extends Component {
                 </Switch>
                     </div>
             </Router>
+                {/*<div id='footer'>*/}
+                {/*    <Navbar bg="light" expand="lg" sticky="bottom">*/}
+                {/*        <Navbar.Collapse id="basic-navbar-footer">*/}
+                {/*            <NavLink>Contact</NavLink>*/}
+                {/*            <NavLink>Positions</NavLink>*/}
+                {/*            <NavLink>Information</NavLink>*/}
+                {/*        </Navbar.Collapse>*/}
+                {/*    </Navbar>*/}
+                {/*</div>*/}
             </div>
         );
     }

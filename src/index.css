@@ -95,8 +95,7 @@ Body {
 }
 .navbar {
     width: 100%;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    height: 60px;
 }
 .card {
     margin-bottom: 25px;
@@ -234,5 +233,16 @@ Body {
 
 .CartSelect {
     margin-right: 10px;
+}
 
+.CartPrice {
+    margin-right: 15px;
+}
+
+#footer {
+    width: 100%;
+    position: sticky;
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
 }
