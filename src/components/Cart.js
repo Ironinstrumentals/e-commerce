@@ -3,48 +3,26 @@ import store from './store';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-//import uuid from 'uuid';
+import { Link } from 'react-router-dom';
 
 export class Cart extends Component {
     state = {
         Products: []
     };
-    /////
-    removeFromCartOLD(item) {
-        for (let i = 0; i < store.getState().Cart.length; i++) {
-            if (store.getState().Cart[i].title.includes(item)) {
-
-                store.getState().Cart = store.getState().Cart.filter(function(ele){
-                    return ele != store.getState().Cart[i];
-                });
-
-            }
-
-        }
-
-        this.forceUpdate();
-    };
-    ////
     removeFromCart(item) {
         for (let i = 0; i < store.getState().Cart.length; i++) {
             if (store.getState().Cart[i].title.includes(item)) {
                 store.getState().Cart = store.getState().Cart.filter(function(ele){
-                    return ele != store.getState().Cart[i];
+                    return ele !== store.getState().Cart[i];
                 });
             }
         }
         this.forceUpdate();
     };
-    AddToCart(value) {
-        for (let i = 0; i < store.getState().Products.length; i++) {
-            if (store.getState().Products[i].title == value) {
-
-                store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
-            }
-        }
-    };
     Checkout() {
-        alert('Feature Coming Soon!');
+        console.log('Checkout Feature Coming Soon!');
+        alert('Checkout Feature Coming Soon!');
+        store.getState().Cart = [];
     }
     renderCart() {
         return store.getState().Cart.map(product => {
@@ -53,14 +31,143 @@ export class Cart extends Component {
         )})
     }
     render() {
-        return(<div className="Item">
-            <Card>
-                <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
-                <ListGroup variant="flush">
-                    {this.renderCart()}
-                    <ListGroup.Item className='CartItem Checkout' ><Button variant='primary' onClick={() => this.Checkout()}>Checkout</Button></ListGroup.Item>
-                </ListGroup>
-            </Card>
-        </div>)
+        if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+            if (document.location.history === '/Store') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Store'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/TV') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/TV'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/Headphones') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/Headphones'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/Phones') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/Phones'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/Cameras') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/Cameras'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/Watches') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/Watches'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else if (document.location.history === '/Category/TV') {
+                if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                    return (<div className="Item">
+                        <Card>
+                            <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                            <ListGroup variant="flush">
+                                {this.renderCart()}
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/Kitchen_Appliances'
+                                                                                    className='btn btn-outline-primary'
+                                                                                    onClick={() => this.Checkout()}>Checkout <i
+                                    className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </div>)
+                } else {
+                    return (null)
+                }
+            } else
+                return (<div className="Item">
+                    <Card>
+                        <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
+                        <ListGroup variant="flush">
+                            {this.renderCart()}
+                            <ListGroup.Item className='CartItem Checkout'><Link to='/Store'
+                                                                                className='btn btn-outline-primary'
+                                                                                onClick={() => this.Checkout()}>Checkout <i
+                                className="fas fa-credit-card"></i></Link></ListGroup.Item>
+                        </ListGroup>
+                    </Card>
+                </div>)
+        }
+        else {
+            document.location.href = '/';
+            return(null);
+        }
     }
 }

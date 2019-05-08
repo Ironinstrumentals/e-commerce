@@ -12,10 +12,22 @@ export class DetailsModal extends Component {
     AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title == value) {
-                store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]});
+                if (store.getState().Cart.includes(store.getState().Products[i])) {
+                    alert('Already in your Cart!');
+                } else {
+                    if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                        store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]});
+                        alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
+                    } else {
+                        if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
+                            document.location.href = '/';
+                        } else {
+                            return (null);
+                        }
+                    }
+                }
             }
         }
-
     };
     handleClose() {
         let modal = false;
@@ -37,8 +49,8 @@ export class DetailsModal extends Component {
 
                     <Modal.Footer className='MdFooter'>
                         <div className='ModalPrice'>${store.getState().Price}</div>
-                        <Button variant='primary' className='ModalBTN' id='ModalCart' onClick={() => this.AddToCart(store.getState().Title)}>Add to Cart</Button>
-                        <Button variant='secondary' className='ModalBTN' id='ModalClose' onClick={() => window.history.back()}>X</Button>
+                        <Button variant='outline-primary' className='ModalBTN' id='ModalCart' onClick={() => this.AddToCart(store.getState().Title) + window.history.back()}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                        <Button variant='outline-secondary' className='ModalBTN' id='ModalClose' onClick={() => window.history.back()}>X</Button>
                     </Modal.Footer>
 
             </Modal>

@@ -2,21 +2,15 @@ import React, { Component } from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import store from './store';
-
 import { Link } from 'react-router-dom';
 import ListGroup from "react-bootstrap/ListGroup";
-
-
 let TV = [];
 let Headphones = [];
 let Phones = [];
 let Cameras = [];
 let Watches = [];
 let Kitchen_Appliances = [];
-
-
 export class ItemCreator extends Component {
-
     state = {
         Products: [],
         TV: TV,
@@ -24,14 +18,12 @@ export class ItemCreator extends Component {
         Phones: Phones,
         Cameras: Cameras,
         Watches: Watches,
-        Kitchen_Appliances: Kitchen_Appliances,
-
+        Kitchen_Appliances: Kitchen_Appliances
     };
     static handleShow() {
         let modal = true;
         store.dispatch({type: 'MODAL', modal});
     }
-
     static setModal(title, description, price, rating) {
         store.dispatch({type: 'ITEM_TITLE', title});
         store.dispatch({type: 'ITEM_DESCRIPTION', description});
@@ -39,23 +31,30 @@ export class ItemCreator extends Component {
         store.dispatch({type: 'ITEM_RATING', rating});
         ItemCreator.handleShow();
     }
-
-    static AddToCart(value) {
+    AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
-            if (store.getState().Products[i].title === value) {
+            if (store.getState().Products[i].title == value) {
                 if (store.getState().Cart.includes(store.getState().Products[i])) {
                     alert('Already in your Cart!');
                 } else {
-                    store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
+                    if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                        store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]});
+                        alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
+                    } else {
+                        if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
+                            document.location.href = '/';
+                        } else {
+                            return (null);
+                        }
+
+                    }
+
                 }
             }
         }
-        //store.dispatch({type: 'ADD_TO_CART', });
-        //console.log(store.getState());
     };
     renderItems() {
         this.itemPusher();
-        //store.dispatch(this.state);
         return store.getState().Products.map(product => {
             return(
                 <div className="Item" key={product.id}>
@@ -65,12 +64,12 @@ export class ItemCreator extends Component {
                     <Card.Body className="CBody">
                         <ListGroup variant='flush'>
                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                         <div className="SuperDiv">
                         <Card.Text className="iflex">
                             ${product.price}
                         </Card.Text>
-                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                         </div>
                         </ListGroup>
                     </Card.Body>
@@ -115,16 +114,13 @@ export class ItemCreator extends Component {
                 }
             }
         }
-        //
     }
     render() {
-
         return(
                 this.renderItems()
         );
     }
 }
-
 export class ItemFilter extends Component {
     state = {
         Products: [],
@@ -134,21 +130,28 @@ export class ItemFilter extends Component {
         Cameras: Cameras,
         Watches: Watches,
         Kitchen_Appliances: Kitchen_Appliances,
-
     };
-
     AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
-            if (store.getState().Products[i].title === value) {
-                store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]})
+            if (store.getState().Products[i].title == value) {
+                if (store.getState().Cart.includes(store.getState().Products[i])) {
+                    alert('Already in your Cart!');
+                } else {
+                    if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
+                        store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]});
+                        alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
+                    } else {
+                        if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
+                            document.location.href = '/';
+                        } else {
+                            return (null);
+                        }
+                    }
+                }
             }
         }
-        //store.dispatch({type: 'ADD_TO_CART', });
-        //console.log(store.getState());
     };
-
     renderItems(category) {
-
             if (document.location.href.includes('/TV')) {
                 category = 'TV';
             } else {
@@ -174,7 +177,6 @@ export class ItemFilter extends Component {
                     }
                 }
             }
-
             if (category === 'TV') {
                 return this.state.TV.map(product => {
                     return(
@@ -185,12 +187,12 @@ export class ItemFilter extends Component {
                                 <Card.Body className="CBody">
                                     <ListGroup variant='flush'>
                                         <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                         <div className="SuperDiv">
                                             <Card.Text className="iflex">
                                                 ${product.price}
                                             </Card.Text>
-                                            <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                    <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                         </div>
                                     </ListGroup>
                                 </Card.Body>
@@ -209,12 +211,12 @@ export class ItemFilter extends Component {
                                     <Card.Body className="CBody">
                                         <ListGroup variant='flush'>
                                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                             <div className="SuperDiv">
                                                 <Card.Text className="iflex">
                                                     ${product.price}
                                                 </Card.Text>
-                                                <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                        <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                             </div>
                                         </ListGroup>
                                     </Card.Body>
@@ -233,12 +235,12 @@ export class ItemFilter extends Component {
                                         <Card.Body className="CBody">
                                             <ListGroup variant='flush'>
                                                 <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                                <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                 <div className="SuperDiv">
                                                     <Card.Text className="iflex">
                                                         ${product.price}
                                                     </Card.Text>
-                                                    <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                            <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                                 </div>
                                             </ListGroup>
                                         </Card.Body>
@@ -257,12 +259,12 @@ export class ItemFilter extends Component {
                                             <Card.Body className="CBody">
                                                 <ListGroup variant='flush'>
                                                     <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                    <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                                    <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                     <div className="SuperDiv">
                                                         <Card.Text className="iflex">
                                                             ${product.price}
                                                         </Card.Text>
-                                                        <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                                <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                                     </div>
                                                 </ListGroup>
                                             </Card.Body>
@@ -281,12 +283,12 @@ export class ItemFilter extends Component {
                                                 <Card.Body className="CBody">
                                                     <ListGroup variant='flush'>
                                                         <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                         <div className="SuperDiv">
                                                             <Card.Text className="iflex">
                                                                 ${product.price}
                                                             </Card.Text>
-                                                            <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                                    <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                                         </div>
                                                     </ListGroup>
                                                 </Card.Body>
@@ -305,12 +307,12 @@ export class ItemFilter extends Component {
                                                     <Card.Body className="CBody">
                                                         <ListGroup variant='flush'>
                                                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-primary'>Details</Link>
+                                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                             <div className="SuperDiv">
                                                                 <Card.Text className="iflex">
                                                                     ${product.price}
                                                                 </Card.Text>
-                                                                <Button className="iflex CartBTN" variant="primary" id={product.title} onClick={() => ItemCreator.AddToCart(product.title)}>Add to Cart</Button>
+                                                                                        <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
                                                             </div>
                                                         </ListGroup>
                                                     </Card.Body>
@@ -326,13 +328,8 @@ export class ItemFilter extends Component {
                     }
                 }
             }
-
-
     };
-
-
     render() {
-
         return(
             this.renderItems()
 

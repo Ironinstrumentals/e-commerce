@@ -91,6 +91,12 @@ function reducer(state, action){
             Kitchen_Appliances: action.Kitchen_Appliances
         }
     }
+    else if (action.type === 'ACCOUNT_NAME') {
+        return {
+            ...state,
+            UserName: action.username
+        }
+    }
     else {
         return state;
     }

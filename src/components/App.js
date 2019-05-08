@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {ItemCreator} from "./ItemCreator"
@@ -15,13 +14,12 @@ import {ItemFilter} from './ItemCreator';
 import {Cart} from './Cart';
 import store from './store';
 import {DetailsModal} from "./DetailsModal";
-import NavLink from "react-bootstrap/NavLink";
+import {Login} from './Login';
 
 
 
 
 class App extends Component {
-
     componentDidMount() {
         store.subscribe(() => this.forceUpdate());
         fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products')
@@ -31,8 +29,6 @@ class App extends Component {
             .then((items) => {
                 store.dispatch({type: 'SET_PRODUCTS', items: items})
             });
-
-
     };
     render() {
         return (
@@ -44,7 +40,7 @@ class App extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
 
-                            <Link className='nav-link' to="/">Home</Link>
+                            <Link className='nav-link' to="/Store">Store</Link>
 
                             <NavDropdown title="Categories" id="basic-nav-dropdown">
                                 <Link className='dropdown-item' to="/Category/TV/" key='TV'>TV</Link>
@@ -57,52 +53,36 @@ class App extends Component {
 
 
                         </Nav>
-                        <Form inline>
-                            <Link className='nav-link' to="/Cart">Cart</Link>
-                        </Form>
+                        <Link className='nav-link' to="/Cart">Cart <i className="fas fa-shopping-cart"></i></Link>
                     </Navbar.Collapse>
                 </Navbar>
 
                     <div className="Switcher">
-                <Switch>
-                    <Route exact path="/" render={() => (<div className="Items"><ItemCreator /></div>)}/>
-                    <Route exact path="/Home" render={() => (<div className="Items"><ItemCreator /></div>)}/>
-                    <Route exact path="/Category/TV/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Headphones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Phones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Cameras/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Watches/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                    <Route exact path="/Category/Kitchen_Appliances/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                        <Switch>
+                            <Route exact path="/" render={() => (<div className="Items"><Login /></div>)}/>
+                            <Route exact path="/Store" render={() => (<div className="Items"><ItemCreator /></div>)}/>
+                            <Route exact path="/Category/TV/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/Category/Headphones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/Category/Phones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/Category/Cameras/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/Category/Watches/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/Category/Kitchen_Appliances/" render={() => (<div className="Items"><ItemFilter /></div>)} />
 
-                    <Route exact path="/Category/TV/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                    <Route exact path="/Category/Headphones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                    <Route exact path="/Category/Phones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                    <Route exact path="/Category/Cameras/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                    <Route exact path="/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                    <Route exact path="/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/TV/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/Headphones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/Phones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/Cameras/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
 
-                    <Route exact path="/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
-                    <Route path="/company/page" render={() => (<div>Page</div>)}/>
-                    <Route exact path="/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
-                    <Route path="/RedirectJS" component={RedirectJS} />
-                    <Route render={() => ( //ALWAYS PUT THIS LAST
-                        <div><h3>ERROR 404: Not Found</h3>
-                            <RedirectJS />
-                        </div>
-
-                    )} />
-                </Switch>
+                            <Route exact path="/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
+                            <Route path="/company/page" render={() => (<div>Page</div>)}/>
+                            <Route exact path="/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
+                            <Route path="/RedirectJS" component={RedirectJS} />
+                            <Route render={() => (<div><RedirectJS /></div>)} />
+                        </Switch>
                     </div>
-            </Router>
-                {/*<div id='footer'>*/}
-                {/*    <Navbar bg="light" expand="lg" sticky="bottom">*/}
-                {/*        <Navbar.Collapse id="basic-navbar-footer">*/}
-                {/*            <NavLink>Contact</NavLink>*/}
-                {/*            <NavLink>Positions</NavLink>*/}
-                {/*            <NavLink>Information</NavLink>*/}
-                {/*        </Navbar.Collapse>*/}
-                {/*    </Navbar>*/}
-                {/*</div>*/}
+                </Router>
             </div>
         );
     }

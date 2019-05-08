@@ -94,7 +94,9 @@ Body {
 }
 .navbar {
     width: 100%;
-    height: 60px;
+}
+#superFooter {
+    height: 55px;
 }
 .card {
     margin-bottom: 25px;
@@ -202,7 +204,9 @@ Body {
 }
 
 #ModalCart {
-    margin-left: 60%;
+    display: flex;
+    margin-left: 58%;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -210,11 +214,19 @@ Body {
 }
 
 #ModalClose {
-    margin-left: 85%;
+    margin-left: 88%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: #E53333;
+    border-color: #E53333;
+    padding: 1px 8px 1px 8px;
+}
+
+#ModalClose:hover {
+    background-color: #E53333;
+    color: white;
 }
 
 .CartBTN {
@@ -263,4 +275,74 @@ Body {
     align-items: center;
     justify-items: center;
     justify-self: center;
+}
+
+.fa-cart-plus {
+    display: flex;
+    align-self: center;
+    padding-left: 4px;
+}
+
+.fa-credit-card {
+    margin-left: 8px;
+}
+
+.navLogin {
+    display: flex;
+    width: 100%;
+}
+
+.usernameInput {
+    display: flex;
+}
+
+.loginCard {
+    display: flex;
+    width: 270px;
+    justify-content: center;
+    align-items: center;
+}
+.navLogin {
+}
+.loginBody {
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.loginInput {
+    width: 225px;
+}
+
+#superFooter {
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+    align-items: flex-end;
+    align-self: flex-end;
+    justify-content: space-between;
+    justify-items: flex-end;
+    justify-self: flex-end;
+}
+
+.no-collapse {
+    display: flex;
+    flex-direction: row;
+}
+
+.Redirect {
+    text-align: center;
+    margin-top: 20%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    color: white;
 }
