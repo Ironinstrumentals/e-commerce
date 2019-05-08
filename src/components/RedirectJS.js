@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
-class RedirectJS extends React.Component{
+class RedirectJS extends React.Component {
     state = {
         counter: 5,
     };

@@ -85,7 +85,6 @@ Body {
     align-content: flex-end;
     align-self: center;
 }
-
 .card-text {
     margin-top: 8px;
 }
@@ -107,7 +106,6 @@ Body {
     animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
     visibility: visible !important; }
-
 @keyframes card {
     0% {
         transform: scale(0);
@@ -120,7 +118,6 @@ Body {
     100% {
         transform: scale(1);
         opacity: 1; } }
-
 @-webkit-keyframes card {
     0% {
         -webkit-transform: scale(0);
@@ -133,7 +130,6 @@ Body {
     100% {
         -webkit-transform: scale(1);
         opacity: 1; } }
-
 .CartBox {
     width: 100%;
     text-align: center;
@@ -146,11 +142,9 @@ Body {
     align-content: space-between;
     justify-content: space-between;
 }
-
 .CartDiv {
     margin-right: 80px;
 }
-
 .CartIMG {
     display: flex;
     height: 50px;
@@ -158,11 +152,9 @@ Body {
     object-fit: scale-down;
     margin-right: 30px;
 }
-
 .CartIMG:hover {
     transform: scale(1.05, 1.05);
 }
-
 #DetailsBTN {
     display: flex;
     position: absolute;
@@ -174,9 +166,7 @@ Body {
     user-select: none;
     margin-left: 0;
     align-self: center;
-
 }
-
 .Modalio {
     justify-content: center;
     justify-self: center;
@@ -184,17 +174,14 @@ Body {
     align-self: center;
     color: black;
 }
-
 .ModalPrice {
     align-self: center;
     justify-self: flex-start;
 }
-
 .MdFooter {
     align-items: center;
     justify-content: space-between;
 }
-
 .ModalBTN {
     position: absolute;
     -webkit-user-select: none;
@@ -202,7 +189,6 @@ Body {
     -ms-user-select: none;
     user-select: none;
 }
-
 #ModalCart {
     display: flex;
     margin-left: 58%;
@@ -212,7 +198,6 @@ Body {
     -ms-user-select: none;
     user-select: none;
 }
-
 #ModalClose {
     margin-left: 88%;
     -webkit-user-select: none;
@@ -223,33 +208,27 @@ Body {
     border-color: #E53333;
     padding: 1px 8px 1px 8px;
 }
-
 #ModalClose:hover {
     background-color: #E53333;
     color: white;
 }
-
 .CartBTN {
     margin-top: 10px;
     padding: 6px;
     align-self: center;
     justify-self: center;
 }
-
 .Checkout {
     display: flex;
     width: 100%;
     justify-content: flex-end;
 }
-
 .CartSelect {
     margin-right: 10px;
 }
-
 .CartPrice {
     margin-right: 15px;
 }
-
 #footer {
     width: 100%;
     position: sticky;
@@ -276,33 +255,26 @@ Body {
     justify-items: center;
     justify-self: center;
 }
-
 .fa-cart-plus {
     display: flex;
     align-self: center;
     padding-left: 4px;
 }
-
 .fa-credit-card {
     margin-left: 8px;
 }
-
 .navLogin {
     display: flex;
     width: 100%;
 }
-
 .usernameInput {
     display: flex;
 }
-
 .loginCard {
     display: flex;
     width: 270px;
     justify-content: center;
     align-items: center;
-}
-.navLogin {
 }
 .loginBody {
     display: flex;
@@ -313,11 +285,9 @@ Body {
     align-self: flex-start;
     justify-self: flex-start;
 }
-
 .loginInput {
     width: 225px;
 }
-
 #superFooter {
     width: 100%;
     display: flex;
@@ -328,12 +298,10 @@ Body {
     justify-items: flex-end;
     justify-self: flex-end;
 }
-
 .no-collapse {
     display: flex;
     flex-direction: row;
 }
-
 .Redirect {
     text-align: center;
     margin-top: 20%;

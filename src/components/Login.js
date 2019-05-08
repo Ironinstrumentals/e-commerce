@@ -4,7 +4,6 @@ import store from './store';
 import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
-
 export class Login extends Component {
     renderLogin() {
         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
@@ -44,7 +43,6 @@ export class Login extends Component {
         store.dispatch({type: 'ACCOUNT_NAME', username});
         document.getElementById('FooterAccountName').innerHTML = 'Logout from: ' + store.getState().UserName;
         document.getElementById('FooterAccountName').setAttribute('href', '/');
-
     }
     render() {
         return(

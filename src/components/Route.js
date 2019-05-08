@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes  from 'prop-types';
-
 const  Route = ({  path, component: Component }, { location }) =>  {
     const pathname = location.pathname;
     if (pathname === path) {
@@ -14,5 +13,4 @@ const  Route = ({  path, component: Component }, { location }) =>  {
 Route.contextTypes  = {
     location: PropTypes.object
 };
-
 export default Route;

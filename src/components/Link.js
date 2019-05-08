@@ -15,9 +15,7 @@ const Link = ({ to, children }, { history }) => {
         </a>
     )
 };
-
 Link.contextTypes = {
     history: PropTypes.object
 };
-
 export default Link;

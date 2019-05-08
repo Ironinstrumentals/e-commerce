@@ -332,7 +332,6 @@ export class ItemFilter extends Component {
     render() {
         return(
             this.renderItems()
-
         );
     }
 }

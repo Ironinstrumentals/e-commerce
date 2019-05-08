@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createBrowserHistory } from 'history';
-
 class Router extends React.Component  {
     static childContextTypes = {
         history: PropTypes.object,
@@ -9,7 +8,6 @@ class Router extends React.Component  {
     };
     constructor(props) {
         super(props);
-
         this.history = createBrowserHistory();
     }
     getChildContext() {
@@ -22,5 +20,4 @@ class Router extends React.Component  {
         return this.props.children;
     }
 }
-
 export default Router;
