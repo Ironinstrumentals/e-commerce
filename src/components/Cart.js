@@ -19,14 +19,25 @@ export class Cart extends Component {
         this.forceUpdate();
     };
     Checkout() {
-        console.log('Checkout Feature Coming Soon!');
         alert('Checkout Feature Coming Soon!');
         store.getState().Cart = [];
+    }
+    calibratePrice(price, value) {
+        if (isNaN(price * value)) {
+            return (
+                price
+            )
+        } else {
+            let meme = price * value;
+            return(
+                meme
+            )
+        }
     }
     renderCart() {
         return store.getState().Cart.map(product => {
         return(
-            <ListGroup.Item className='CartItem' key={product.id}><img alt={product.title + ' Image'} className="CartIMG" src={product.img} /><div className="CartDiv">{product.title} </div><div className='CartPrice'>${product.price}</div><div>  <select className='CartSelect'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select><Button variant="primary" id={product.title} onClick={() => this.removeFromCart(product.title)}>Delete</Button></div></ListGroup.Item>
+            <ListGroup.Item className='CartItem' key={product.id}><img alt={product.title + ' Image'} className="CartIMG" src={product.img} /><div className="CartDiv">{product.title} </div><div className='CartPrice'>${this.calibratePrice(product.price, document.getElementById(product.id).value)}</div><div>  <select className='CartSelect' id={product.id} onChange={() => this.forceUpdate()} onLoad={() => this.forceUpdate()}><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select><Button variant="primary" id={product.title} onClick={() => this.removeFromCart(product.title)}>Delete</Button></div></ListGroup.Item>
         )})
     }
     render() {

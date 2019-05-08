@@ -46,9 +46,7 @@ export class ItemCreator extends Component {
                         } else {
                             return (null);
                         }
-
                     }
-
                 }
             }
         }
