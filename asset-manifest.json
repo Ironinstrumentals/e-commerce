@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/e-commerce/static/css/main.eaee78cb.chunk.css",
-    "main.js": "/e-commerce/static/js/main.40d6fa61.chunk.js",
-    "main.js.map": "/e-commerce/static/js/main.40d6fa61.chunk.js.map",
+    "main.css": "/e-commerce/static/css/main.a77e15f5.chunk.css",
+    "main.js": "/e-commerce/static/js/main.a951011a.chunk.js",
+    "main.js.map": "/e-commerce/static/js/main.a951011a.chunk.js.map",
     "runtime~main.js": "/e-commerce/static/js/runtime~main.8575550b.js",
     "runtime~main.js.map": "/e-commerce/static/js/runtime~main.8575550b.js.map",
     "static/js/2.a51b7850.chunk.js": "/e-commerce/static/js/2.a51b7850.chunk.js",
     "static/js/2.a51b7850.chunk.js.map": "/e-commerce/static/js/2.a51b7850.chunk.js.map",
     "index.html": "/e-commerce/index.html",
-    "precache-manifest.75c18341c91f4bdd03902b22dbc6a52a.js": "/e-commerce/precache-manifest.75c18341c91f4bdd03902b22dbc6a52a.js",
+    "precache-manifest.0f9a3529a4eca9d773d37b447560dda4.js": "/e-commerce/precache-manifest.0f9a3529a4eca9d773d37b447560dda4.js",
     "service-worker.js": "/e-commerce/service-worker.js",
-    "static/css/main.eaee78cb.chunk.css.map": "/e-commerce/static/css/main.eaee78cb.chunk.css.map"
+    "static/css/main.a77e15f5.chunk.css.map": "/e-commerce/static/css/main.a77e15f5.chunk.css.map"
   }
 }
