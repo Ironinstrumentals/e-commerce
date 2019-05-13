@@ -28,7 +28,7 @@ export class Cart extends Component {
                 price
             )
         } else {
-            let meme = price * value;
+            let meme = (price * value).toFixed(2);
             return(
                 meme
             )
