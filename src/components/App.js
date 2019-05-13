@@ -31,38 +31,38 @@ class App extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Link className='nav-link' to="/Store">Store</Link>
+                            <Link className='nav-link' to="/e-commerce/Store">Store</Link>
                             <NavDropdown title="Categories" id="basic-nav-dropdown">
-                                <Link className='dropdown-item' to="/Category/TV/" key='TV'>TV</Link>
-                                <Link className='dropdown-item' to="/Category/Headphones/" key='Headphones'>Headphones</Link>
-                                <Link className='dropdown-item' to="/Category/Phones/">Phones</Link>
-                                <Link className='dropdown-item' to="/Category/Cameras/">Cameras</Link>
-                                <Link className='dropdown-item' to="/Category/Watches/">Watches</Link>
-                                <Link className='dropdown-item' to="/Category/Kitchen_Appliances/">Kitchen Appliances</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/TV/" key='TV'>TV</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/Headphones/" key='Headphones'>Headphones</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/Phones/">Phones</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/Cameras/">Cameras</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/Watches/">Watches</Link>
+                                <Link className='dropdown-item' to="/e-commerce/Category/Kitchen_Appliances/">Kitchen Appliances</Link>
                             </NavDropdown>
                         </Nav>
-                        <Link className='nav-link' to="/Cart">Cart <i className="fas fa-shopping-cart"></i></Link>
+                        <Link className='nav-link' to="/e-commerce/Cart">Cart <i className="fas fa-shopping-cart"></i></Link>
                     </Navbar.Collapse>
                 </Navbar>
                     <div className="Switcher">
                         <Switch>
-                            <Route exact path="/" render={() => (<div className="Items"><Login /></div>)}/>
-                            <Route exact path="/Store" render={() => (<div className="Items"><ItemCreator /></div>)}/>
-                            <Route exact path="/Category/TV/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/Headphones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/Phones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/Cameras/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/Watches/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/Kitchen_Appliances/" render={() => (<div className="Items"><ItemFilter /></div>)} />
-                            <Route exact path="/Category/TV/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Category/Headphones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Category/Phones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Category/Cameras/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
-                            <Route exact path="/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
+                            <Route exact path="/e-commerce" render={() => (<div className="Items"><Login /></div>)}/>
+                            <Route exact path="/e-commerce/Store" render={() => (<div className="Items"><ItemCreator /></div>)}/>
+                            <Route exact path="/e-commerce/Category/TV/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/Headphones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/Phones/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/Cameras/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/Watches/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/Kitchen_Appliances/" render={() => (<div className="Items"><ItemFilter /></div>)} />
+                            <Route exact path="/e-commerce/Category/TV/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Category/Headphones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Category/Phones/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Category/Cameras/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
                             <Route path="/company/page" render={() => (<div>Page</div>)}/>
-                            <Route exact path="/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
+                            <Route exact path="/e-commerce/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
                             <Route path="/RedirectJS" component={RedirectJS} />
                             <Route render={() => (<div><RedirectJS /></div>)} />
                         </Switch>

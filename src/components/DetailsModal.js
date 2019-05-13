@@ -17,7 +17,7 @@ export class DetailsModal extends Component {
                         alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
-                            document.location.href = '/';
+                            document.location.href = '/e-commerce/';
                         } else {
                             return (null);
                         }

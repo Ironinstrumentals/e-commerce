@@ -228,6 +228,7 @@ Body {
 }
 .CartPrice {
     margin-right: 15px;
+    margin-left: 0;
 }
 #footer {
     width: 100%;

@@ -62,7 +62,7 @@ export class ItemCreator extends Component {
                     <Card.Body className="CBody">
                         <ListGroup variant='flush'>
                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                        <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                         <div className="SuperDiv">
                         <Card.Text className="iflex">
                             ${product.price}
@@ -140,7 +140,7 @@ export class ItemFilter extends Component {
                         alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
-                            document.location.href = '/';
+                            document.location.href = '/e-commerce/';
                         } else {
                             return (null);
                         }
@@ -185,7 +185,7 @@ export class ItemFilter extends Component {
                                 <Card.Body className="CBody">
                                     <ListGroup variant='flush'>
                                         <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                        <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                         <div className="SuperDiv">
                                             <Card.Text className="iflex">
                                                 ${product.price}
@@ -209,7 +209,7 @@ export class ItemFilter extends Component {
                                     <Card.Body className="CBody">
                                         <ListGroup variant='flush'>
                                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                            <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                             <div className="SuperDiv">
                                                 <Card.Text className="iflex">
                                                     ${product.price}
@@ -233,7 +233,7 @@ export class ItemFilter extends Component {
                                         <Card.Body className="CBody">
                                             <ListGroup variant='flush'>
                                                 <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                 <div className="SuperDiv">
                                                     <Card.Text className="iflex">
                                                         ${product.price}
@@ -257,7 +257,7 @@ export class ItemFilter extends Component {
                                             <Card.Body className="CBody">
                                                 <ListGroup variant='flush'>
                                                     <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                    <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                    <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                     <div className="SuperDiv">
                                                         <Card.Text className="iflex">
                                                             ${product.price}
@@ -281,7 +281,7 @@ export class ItemFilter extends Component {
                                                 <Card.Body className="CBody">
                                                     <ListGroup variant='flush'>
                                                         <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                        <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                        <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                         <div className="SuperDiv">
                                                             <Card.Text className="iflex">
                                                                 ${product.price}
@@ -305,7 +305,7 @@ export class ItemFilter extends Component {
                                                     <Card.Body className="CBody">
                                                         <ListGroup variant='flush'>
                                                             <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                            <Link to='Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                            <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
                                                             <div className="SuperDiv">
                                                                 <Card.Text className="iflex">
                                                                     ${product.price}

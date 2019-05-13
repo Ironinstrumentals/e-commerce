@@ -24,7 +24,7 @@ class RedirectJS extends React.Component {
                     <p>Redirecting in {this.state.counter}...</p>
                     {
                         (this.state.counter < 1 ? (
-                                <Redirect to="/" />
+                                <Redirect to="/e-commerce" />
                             ) : null
                         )
                     }

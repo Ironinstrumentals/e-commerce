@@ -29,20 +29,20 @@ export class Login extends Component {
                             <Card.Text>
                                 <input className='loginInput passwordInput' id='passwordInput' type='password'/>
                             </Card.Text>
-                            <Link to='/Store' className='btn btn-outline-primary' onClick={() => this.setAccount()}>Submit</Link>
+                            <Link to='/e-commerce/Store' className='btn btn-outline-primary' onClick={() => this.setAccount()}>Submit</Link>
                         </Form>
                     </Card.Body>
                 </Card>
             )
         } else {
-            document.location.href = '/Store';
+            document.location.href = '/e-commerce/Store';
         }
     }
     setAccount() {
         let username = document.getElementById('usernameInput').value;
         store.dispatch({type: 'ACCOUNT_NAME', username});
         document.getElementById('FooterAccountName').innerHTML = 'Logout from: ' + store.getState().UserName;
-        document.getElementById('FooterAccountName').setAttribute('href', '/');
+        document.getElementById('FooterAccountName').setAttribute('href', '/e-commerce/');
     }
     render() {
         return(
