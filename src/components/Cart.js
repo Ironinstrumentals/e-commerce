@@ -42,14 +42,14 @@ export class Cart extends Component {
     }
     render() {
         if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
-            if (document.location.history === '/e-commerce#Store') {
+            if (document.location.history === '/e-commerce/Store') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Store'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Store'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -59,14 +59,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#TV') {
+            } else if (document.location.history === '/Category/TV') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='#e-commerce#Category#TV'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/TV'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -76,14 +76,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#Headphones') {
+            } else if (document.location.history === '/Category/Headphones') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Category#Headphones'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Headphones'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -93,14 +93,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#Phones') {
+            } else if (document.location.history === '/Category/Phones') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Category#Phones'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Phones'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -110,14 +110,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#Cameras') {
+            } else if (document.location.history === '/Category/Cameras') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Category#Cameras'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Cameras'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -127,14 +127,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#Watches') {
+            } else if (document.location.history === '/Category/Watches') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Category#Watches'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Watches'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -144,14 +144,14 @@ export class Cart extends Component {
                 } else {
                     return (null)
                 }
-            } else if (document.location.history === '#Category#TV') {
+            } else if (document.location.history === '/Category/TV') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Category#Kitchen_Appliances'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Kitchen_Appliances'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -167,7 +167,7 @@ export class Cart extends Component {
                         <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                         <ListGroup variant="flush">
                             {this.renderCart()}
-                            <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce#Store'
+                            <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Store'
                                                                                 className='btn btn-outline-primary'
                                                                                 onClick={() => this.Checkout()}>Checkout <i
                                 className="fas fa-credit-card"></i></Link></ListGroup.Item>
