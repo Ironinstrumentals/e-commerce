@@ -42,7 +42,7 @@ export class ItemCreator extends Component {
                         alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
-                            document.location.href = '/';
+                            document.location.href = '/e-commerce/';
                         } else {
                             return (null);
                         }
@@ -150,6 +150,7 @@ export class ItemFilter extends Component {
         }
     };
     renderItems(category) {
+        if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
             if (document.location.href.includes('/TV')) {
                 category = 'TV';
             } else {
@@ -177,20 +178,25 @@ export class ItemFilter extends Component {
             }
             if (category === 'TV') {
                 return this.state.TV.map(product => {
-                    return(
+                    return (
                         <div className="Item" key={product.id}>
-                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                <Card.Img variant="top" src={product.img} />
+                            <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                <Card.Img variant="top" src={product.img}/>
                                 <div className='BorderLine'></div>
                                 <Card.Body className="CBody">
                                     <ListGroup variant='flush'>
-                                        <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                        <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                        <ListGroup.Item className='SuperItem'><Card.Title
+                                            id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                        <Link to='/e-commerce/Category/TV/Details' id='DetailsBTN'
+                                              onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                              className='btn btn-outline-primary'>Details</Link>
                                         <div className="SuperDiv">
                                             <Card.Text className="iflex">
                                                 ${product.price}
                                             </Card.Text>
-                                                                    <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                            <Button className="iflex CartBTN" variant="outline-primary"
+                                                    id={product.title} onClick={() => this.AddToCart(product.title)}>Add
+                                                to Cart <i className="fas fa-cart-plus"></i></Button>
                                         </div>
                                     </ListGroup>
                                 </Card.Body>
@@ -201,20 +207,26 @@ export class ItemFilter extends Component {
             } else {
                 if (category === 'Headphones') {
                     return this.state.Headphones.map(product => {
-                        return(
+                        return (
                             <div className="Item" key={product.id}>
-                                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                    <Card.Img variant="top" src={product.img} />
+                                <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                    <Card.Img variant="top" src={product.img}/>
                                     <div className='BorderLine'></div>
                                     <Card.Body className="CBody">
                                         <ListGroup variant='flush'>
-                                            <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                            <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                            <ListGroup.Item className='SuperItem'><Card.Title
+                                                id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                            <Link to='/e-commerce/Category/Headphones/Details' id='DetailsBTN'
+                                                  onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                                  className='btn btn-outline-primary'>Details</Link>
                                             <div className="SuperDiv">
                                                 <Card.Text className="iflex">
                                                     ${product.price}
                                                 </Card.Text>
-                                                                        <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                                <Button className="iflex CartBTN" variant="outline-primary"
+                                                        id={product.title}
+                                                        onClick={() => this.AddToCart(product.title)}>Add to Cart <i
+                                                    className="fas fa-cart-plus"></i></Button>
                                             </div>
                                         </ListGroup>
                                     </Card.Body>
@@ -225,20 +237,26 @@ export class ItemFilter extends Component {
                 } else {
                     if (category === 'Phones') {
                         return this.state.Phones.map(product => {
-                            return(
+                            return (
                                 <div className="Item" key={product.id}>
-                                    <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                        <Card.Img variant="top" src={product.img} />
+                                    <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                        <Card.Img variant="top" src={product.img}/>
                                         <div className='BorderLine'></div>
                                         <Card.Body className="CBody">
                                             <ListGroup variant='flush'>
-                                                <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                <ListGroup.Item className='SuperItem'><Card.Title
+                                                    id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                                <Link to='/e-commerce/Category/Phones/Details' id='DetailsBTN'
+                                                      onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                                      className='btn btn-outline-primary'>Details</Link>
                                                 <div className="SuperDiv">
                                                     <Card.Text className="iflex">
                                                         ${product.price}
                                                     </Card.Text>
-                                                                            <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                                    <Button className="iflex CartBTN" variant="outline-primary"
+                                                            id={product.title}
+                                                            onClick={() => this.AddToCart(product.title)}>Add to Cart <i
+                                                        className="fas fa-cart-plus"></i></Button>
                                                 </div>
                                             </ListGroup>
                                         </Card.Body>
@@ -249,20 +267,26 @@ export class ItemFilter extends Component {
                     } else {
                         if (category === 'Cameras') {
                             return this.state.Cameras.map(product => {
-                                return(
+                                return (
                                     <div className="Item" key={product.id}>
-                                        <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                            <Card.Img variant="top" src={product.img} />
+                                        <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                            <Card.Img variant="top" src={product.img}/>
                                             <div className='BorderLine'></div>
                                             <Card.Body className="CBody">
                                                 <ListGroup variant='flush'>
-                                                    <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                    <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                    <ListGroup.Item className='SuperItem'><Card.Title
+                                                        id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                                    <Link to='/e-commerce/Category/Cameras/Details' id='DetailsBTN'
+                                                          onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                                          className='btn btn-outline-primary'>Details</Link>
                                                     <div className="SuperDiv">
                                                         <Card.Text className="iflex">
                                                             ${product.price}
                                                         </Card.Text>
-                                                                                <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                                        <Button className="iflex CartBTN" variant="outline-primary"
+                                                                id={product.title}
+                                                                onClick={() => this.AddToCart(product.title)}>Add to
+                                                            Cart <i className="fas fa-cart-plus"></i></Button>
                                                     </div>
                                                 </ListGroup>
                                             </Card.Body>
@@ -273,20 +297,26 @@ export class ItemFilter extends Component {
                         } else {
                             if (category === 'Watches') {
                                 return this.state.Watches.map(product => {
-                                    return(
+                                    return (
                                         <div className="Item" key={product.id}>
-                                            <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                                <Card.Img variant="top" src={product.img} />
+                                            <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                                <Card.Img variant="top" src={product.img}/>
                                                 <div className='BorderLine'></div>
                                                 <Card.Body className="CBody">
                                                     <ListGroup variant='flush'>
-                                                        <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                        <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                        <ListGroup.Item className='SuperItem'><Card.Title
+                                                            id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                                        <Link to='/e-commerce/Category/Watches/Details' id='DetailsBTN'
+                                                              onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                                              className='btn btn-outline-primary'>Details</Link>
                                                         <div className="SuperDiv">
                                                             <Card.Text className="iflex">
                                                                 ${product.price}
                                                             </Card.Text>
-                                                                                    <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                                            <Button className="iflex CartBTN" variant="outline-primary"
+                                                                    id={product.title}
+                                                                    onClick={() => this.AddToCart(product.title)}>Add to
+                                                                Cart <i className="fas fa-cart-plus"></i></Button>
                                                         </div>
                                                     </ListGroup>
                                                 </Card.Body>
@@ -297,20 +327,27 @@ export class ItemFilter extends Component {
                             } else {
                                 if (category === 'Kitchen_Appliances') {
                                     return this.state.Kitchen_Appliances.map(product => {
-                                        return(
+                                        return (
                                             <div className="Item" key={product.id}>
-                                                <Card style={{ width: '18rem', height: '425px'}} id={product.id}>
-                                                    <Card.Img variant="top" src={product.img} />
+                                                <Card style={{width: '18rem', height: '425px'}} id={product.id}>
+                                                    <Card.Img variant="top" src={product.img}/>
                                                     <div className='BorderLine'></div>
                                                     <Card.Body className="CBody">
                                                         <ListGroup variant='flush'>
-                                                            <ListGroup.Item className='SuperItem'><Card.Title id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
-                                                            <Link to='/e-commerce/Details' id='DetailsBTN' onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)} className='btn btn-outline-primary'>Details</Link>
+                                                            <ListGroup.Item className='SuperItem'><Card.Title
+                                                                id={product.title + 'Title'}>{product.title}</Card.Title></ListGroup.Item>
+                                                            <Link to='/e-commerce/Category/Kitchen_Appliances/Details' id='DetailsBTN'
+                                                                  onClick={() => ItemCreator.setModal(product.title, product.description, product.price, product.rating)}
+                                                                  className='btn btn-outline-primary'>Details</Link>
                                                             <div className="SuperDiv">
                                                                 <Card.Text className="iflex">
                                                                     ${product.price}
                                                                 </Card.Text>
-                                                                                        <Button className="iflex CartBTN" variant="outline-primary" id={product.title} onClick={() => this.AddToCart(product.title)}>Add to Cart <i className="fas fa-cart-plus"></i></Button>
+                                                                <Button className="iflex CartBTN"
+                                                                        variant="outline-primary" id={product.title}
+                                                                        onClick={() => this.AddToCart(product.title)}>Add
+                                                                    to Cart <i
+                                                                        className="fas fa-cart-plus"></i></Button>
                                                             </div>
                                                         </ListGroup>
                                                     </Card.Body>
@@ -319,13 +356,16 @@ export class ItemFilter extends Component {
                                         )
                                     })
                                 } else {
-                                    return(null);
+                                    return (null);
                                 }
                             }
                         }
                     }
                 }
             }
+        } else {
+            document.location.href = '/e-commerce/';
+        }
     };
     render() {
         return(
