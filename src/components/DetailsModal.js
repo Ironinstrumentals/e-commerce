@@ -32,7 +32,7 @@ export class DetailsModal extends Component {
     }
     renderModal() {
         return (
-            <Modal className='Modalio' show={this.state.show} onHide={() => this.handleClose()}>
+            <Modal className='Modalio fadeIn' show={this.state.show} onHide={() => this.handleClose()}>
                     <Modal.Header>
                         <Modal.Title>{store.getState().Title}</Modal.Title>
                     </Modal.Header>
