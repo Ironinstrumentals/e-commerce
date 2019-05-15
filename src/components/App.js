@@ -27,7 +27,7 @@ class App extends Component {
             <div className="Main">
                 <Router>
                 <Navbar bg="light" expand="lg" sticky="top">
-                    <Navbar.Brand to="/" href='/'>E-Commerce Template</Navbar.Brand>
+                    <Navbar.Brand to="/">E-Commerce Template</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

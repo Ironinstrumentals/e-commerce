@@ -42,7 +42,7 @@ export class ItemCreator extends Component {
                         alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
-                            document.location.href = '/';
+                            document.location.href = '/e-commerce/';
                         } else {
                             return (null);
                         }
@@ -140,7 +140,7 @@ export class ItemFilter extends Component {
                         alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
-                            document.location.href = '/';
+                            document.location.href = '/e-commerce/';
                         } else {
                             return (null);
                         }
@@ -150,7 +150,6 @@ export class ItemFilter extends Component {
         }
     };
     renderItems(category) {
-        if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
             if (document.location.href.includes('/TV')) {
                 category = 'TV';
             } else {
@@ -363,9 +362,6 @@ export class ItemFilter extends Component {
                     }
                 }
             }
-        } else {
-            document.location.href = '/e-commerce/';
-        }
     };
     render() {
         return(
