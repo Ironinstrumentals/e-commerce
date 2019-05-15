@@ -42,7 +42,7 @@ export class Cart extends Component {
     }
     render() {
         if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
-            if (document.location.history === '/e-commerce/Store') {
+            if (document.location.history === '/Store') {
                 if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                     return (<div className="Item">
                         <Card>
@@ -66,7 +66,7 @@ export class Cart extends Component {
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/TV'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/Category/TV'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -100,7 +100,7 @@ export class Cart extends Component {
                             <Card.Header className='CartBox'><h3><b>Cart:</b></h3></Card.Header>
                             <ListGroup variant="flush">
                                 {this.renderCart()}
-                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerce/Category/Phones'
+                                <ListGroup.Item className='CartItem Checkout'><Link to='/e-commerceCategory/Phones'
                                                                                     className='btn btn-outline-primary'
                                                                                     onClick={() => this.Checkout()}>Checkout <i
                                     className="fas fa-credit-card"></i></Link></ListGroup.Item>
@@ -176,7 +176,7 @@ export class Cart extends Component {
                 </div>)
         }
         else {
-            document.location.href = '/e-commerce';
+            document.location.href = '/e-commerce/';
             return(null);
         }
     }

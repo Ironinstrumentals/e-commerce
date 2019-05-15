@@ -4,7 +4,8 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import {ItemCreator} from "./ItemCreator"
 import RedirectJS from './RedirectJS';
-import { BrowserRouter as Router, Route, Link, Switch } from  'react-router-dom';
+//import { BrowserRouter as Router, Route, Link, Switch } from  'react-router-dom';
+import { HashRouter as Router, Route, Link, Switch } from  'react-router-dom';
 import {ItemFilter} from './ItemCreator';
 import {Cart} from './Cart';
 import store from './store';
@@ -26,7 +27,7 @@ class App extends Component {
             <div className="Main">
                 <Router>
                 <Navbar bg="light" expand="lg" sticky="top">
-                    <Navbar.Brand to="/e-commerce/" href='/e-commerce/'>E-Commerce Template</Navbar.Brand>
+                    <Navbar.Brand to="/" href='/'>E-Commerce Template</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
@@ -45,7 +46,9 @@ class App extends Component {
                 </Navbar>
                     <div className="Switcher">
                         <Switch>
-                            <Route exact path="/e-commerce" render={() => (<div className="Items"><Login /></div>)}/>
+                            <Route exact path="/" render={() => (<div className="Items"><Login /></div>)}/>
+                            <Route exact path="/#/e-commerce/" render={() => (<div className="Items"><Login /></div>)}/>
+                            <Route exact path="/e-commerce/" render={() => (<div className="Items"><Login /></div>)}/>
                             <Route exact path="/e-commerce/Store" render={() => (<div className="Items"><ItemCreator /></div>)}/>
                             <Route exact path="/e-commerce/Category/TV" render={() => (<div className="Items"><ItemFilter /></div>)} />
                             <Route exact path="/e-commerce/Category/Headphones" render={() => (<div className="Items"><ItemFilter /></div>)} />
@@ -60,8 +63,7 @@ class App extends Component {
                             <Route exact path="/e-commerce/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
                             <Route exact path="/e-commerce/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
                             <Route exact path="/e-commerce/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
-                            <Route path="/company/page" render={() => (<div>Page</div>)}/>
-                            <Route exact path="/e-commerce/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
+                            <Route  path="/e-commerce/Store/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
                             <Route path="/RedirectJS" component={RedirectJS} />
                             <Route render={() => (<div><RedirectJS /></div>)} />
                         </Switch>

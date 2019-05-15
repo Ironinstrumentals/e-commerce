@@ -10,7 +10,7 @@ export class Login extends Component {
             return (
                 <Card className='loginCard'>
                     <Card.Header className='navLogin'>
-                        <Nav variant="tabs" defaultActiveKey="#Login" className='navLogin'>
+                        <Nav variant="tabs" defaultActiveKey="/Login" className='navLogin'>
                             <Nav.Item>
                                 <Nav.Link href="#Login">Login</Nav.Link>
                             </Nav.Item>
@@ -35,7 +35,7 @@ export class Login extends Component {
                 </Card>
             )
         } else {
-            document.location.href = '/e-commerce/Store';
+            return(null)
         }
     }
     setAccount() {
