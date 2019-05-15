@@ -4,22 +4,7 @@ import Button from "react-bootstrap/Button";
 import store from './store';
 import { Link } from 'react-router-dom';
 import ListGroup from "react-bootstrap/ListGroup";
-let TV = [];
-let Headphones = [];
-let Phones = [];
-let Cameras = [];
-let Watches = [];
-let Kitchen_Appliances = [];
 export class ItemCreator extends Component {
-    state = {
-        Products: [],
-        TV: TV,
-        Headphones: Headphones,
-        Phones: Phones,
-        Cameras: Cameras,
-        Watches: Watches,
-        Kitchen_Appliances: Kitchen_Appliances
-    };
     static handleShow() {
         let modal = true;
         store.dispatch({type: 'MODAL', modal});
@@ -76,43 +61,6 @@ export class ItemCreator extends Component {
             )
         })
     };
-    itemPusher() {
-        TV = [];
-        Headphones = [];
-        Phones = [];
-        Cameras = [];
-        Watches = [];
-        Kitchen_Appliances = [];
-        for (let i = 0; i < store.getState().Products.length; i++) {
-            if (store.getState().Products[i].category === 'tv') {
-                TV.push(store.getState().Products[i]);
-            } else {
-                if (store.getState().Products[i].category === 'headphones') {
-                    Headphones.push(store.getState().Products[i]);
-                } else {
-                    if (store.getState().Products[i].category === 'phone') {
-                        Phones.push(store.getState().Products[i]);
-                    } else {
-                        if (store.getState().Products[i].category === 'action-camera') {
-                            Cameras.push(store.getState().Products[i]);
-                        } else {
-                            if (store.getState().Products[i].category === 'watch') {
-                                Watches.push(store.getState().Products[i]);
-                            } else {
-                                if (store.getState().Products[i].category === 'small-appliance') {
-                                    Kitchen_Appliances.push(store.getState().Products[i]);
-                                } else {
-                                    if (store.getState().Products[i].category === 'refrigerator') {
-                                        Kitchen_Appliances.push(store.getState().Products[i]);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
     render() {
         return(
                 this.renderItems()
@@ -120,15 +68,6 @@ export class ItemCreator extends Component {
     }
 }
 export class ItemFilter extends Component {
-    state = {
-        Products: [],
-        TV: TV,
-        Headphones: Headphones,
-        Phones: Phones,
-        Cameras: Cameras,
-        Watches: Watches,
-        Kitchen_Appliances: Kitchen_Appliances,
-    };
     AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title == value) {
@@ -176,7 +115,7 @@ export class ItemFilter extends Component {
                 }
             }
             if (category === 'TV') {
-                return this.state.TV.map(product => {
+                return store.getState().TV.map(product => {
                     return (
                         <div className="Item" key={product.id}>
                             <Card style={{width: '18rem', height: '425px'}} id={product.id}>
@@ -205,7 +144,7 @@ export class ItemFilter extends Component {
                 })
             } else {
                 if (category === 'Headphones') {
-                    return this.state.Headphones.map(product => {
+                    return store.getState().Headphones.map(product => {
                         return (
                             <div className="Item" key={product.id}>
                                 <Card style={{width: '18rem', height: '425px'}} id={product.id}>
@@ -235,7 +174,7 @@ export class ItemFilter extends Component {
                     })
                 } else {
                     if (category === 'Phones') {
-                        return this.state.Phones.map(product => {
+                        return store.getState().Phones.map(product => {
                             return (
                                 <div className="Item" key={product.id}>
                                     <Card style={{width: '18rem', height: '425px'}} id={product.id}>
@@ -265,7 +204,7 @@ export class ItemFilter extends Component {
                         })
                     } else {
                         if (category === 'Cameras') {
-                            return this.state.Cameras.map(product => {
+                            return store.getState().Cameras.map(product => {
                                 return (
                                     <div className="Item" key={product.id}>
                                         <Card style={{width: '18rem', height: '425px'}} id={product.id}>
@@ -295,7 +234,7 @@ export class ItemFilter extends Component {
                             })
                         } else {
                             if (category === 'Watches') {
-                                return this.state.Watches.map(product => {
+                                return store.getState().Watches.map(product => {
                                     return (
                                         <div className="Item" key={product.id}>
                                             <Card style={{width: '18rem', height: '425px'}} id={product.id}>
@@ -325,7 +264,7 @@ export class ItemFilter extends Component {
                                 })
                             } else {
                                 if (category === 'Kitchen_Appliances') {
-                                    return this.state.Kitchen_Appliances.map(product => {
+                                    return store.getState().Kitchen_Appliances.map(product => {
                                         return (
                                             <div className="Item" key={product.id}>
                                                 <Card style={{width: '18rem', height: '425px'}} id={product.id}>

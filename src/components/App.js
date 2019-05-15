@@ -11,6 +11,12 @@ import {Cart} from './Cart';
 import store from './store';
 import {DetailsModal} from "./DetailsModal";
 import {Login} from './Login';
+let TV = [];
+let Headphones = [];
+let Phones = [];
+let Cameras = [];
+let Watches = [];
+let Kitchen_Appliances = [];
 class App extends Component {
     componentDidMount() {
         store.subscribe(() => this.forceUpdate());
@@ -19,15 +25,60 @@ class App extends Component {
                 return response.json();
             })
             .then((items) => {
-                store.dispatch({type: 'SET_PRODUCTS', items: items})
+                store.dispatch({type: 'SET_PRODUCTS', items: items});
+                this.itemPusher();
             });
     };
+    itemPusher() {
+        TV = [];
+        Headphones = [];
+        Phones = [];
+        Cameras = [];
+        Watches = [];
+        Kitchen_Appliances = [];
+        for (let i = 0; i < store.getState().Products.length; i++) {
+            if (store.getState().Products[i].category === 'tv') {
+                TV.push(store.getState().Products[i]);
+            } else {
+                if (store.getState().Products[i].category === 'headphones') {
+                    Headphones.push(store.getState().Products[i]);
+                } else {
+                    if (store.getState().Products[i].category === 'phone') {
+                        Phones.push(store.getState().Products[i]);
+                    } else {
+                        if (store.getState().Products[i].category === 'action-camera') {
+                            Cameras.push(store.getState().Products[i]);
+                        } else {
+                            if (store.getState().Products[i].category === 'watch') {
+                                Watches.push(store.getState().Products[i]);
+                            } else {
+                                if (store.getState().Products[i].category === 'small-appliance') {
+                                    Kitchen_Appliances.push(store.getState().Products[i]);
+                                } else {
+                                    if (store.getState().Products[i].category === 'refrigerator') {
+                                        Kitchen_Appliances.push(store.getState().Products[i]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //dispatches
+        store.dispatch({type: 'TV', TV: TV });
+        store.dispatch({type: 'Headphones', Headphones: Headphones });
+        store.dispatch({type: 'Phones', Phones: Phones });
+        store.dispatch({type: 'Cameras', Cameras: Cameras });
+        store.dispatch({type: 'Watches', Watches: Watches });
+        store.dispatch({type: 'Kitchen_Appliances', Kitchen_Appliances: Kitchen_Appliances });
+    }
     render() {
         return (
             <div className="Main">
                 <Router>
                 <Navbar bg="light" expand="lg" sticky="top">
-                    <Navbar.Brand to="/">E-Commerce Template</Navbar.Brand>
+                    <Link className="navbar-brand" to="/e-commerce/Store">E-Commerce Template</Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

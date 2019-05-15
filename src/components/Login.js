@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 export class Login extends Component {
+
     renderLogin() {
         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
             return (
