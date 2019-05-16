@@ -37,7 +37,6 @@ export class ItemCreator extends Component {
         }
     };
     renderItems() {
-        this.itemPusher();
         return store.getState().Products.map(product => {
             return(
                 <div className="Item" key={product.id}>
