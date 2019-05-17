@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 export class Login extends Component {
-
     renderLogin() {
         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
             return (
@@ -30,7 +29,7 @@ export class Login extends Component {
                             <Card.Text>
                                 <input className='loginInput passwordInput' id='passwordInput' type='password'/>
                             </Card.Text>
-                            <Link to='/e-commerce/Store' className='btn btn-outline-primary' onClick={() => this.setAccount()}>Submit</Link>
+                            <Link to='/e-commerce/Store' className='btn btn-outline-primary' onClick={() => this.setAccountLocal()}>Submit</Link>
                         </Form>
                     </Card.Body>
                 </Card>
@@ -42,8 +41,26 @@ export class Login extends Component {
     setAccount() {
         let username = document.getElementById('usernameInput').value;
         store.dispatch({type: 'ACCOUNT_NAME', username});
+        localStorage.setItem('user', JSON.stringify(username));
         document.getElementById('FooterAccountName').innerHTML = 'Logout from: ' + store.getState().UserName;
         document.getElementById('FooterAccountName').setAttribute('href', '/e-commerce/');
+    }
+    setAccountLocal() {
+        let localName = JSON.parse(localStorage.getItem('user'));
+        if (localName === undefined) {
+            this.setAccount();
+        } else {
+            if (store.getState().UserName === undefined) {
+                let username = localName;
+                store.dispatch({type: 'ACCOUNT_NAME', username});
+                localStorage.setItem('user', JSON.stringify(username));
+                document.getElementById('FooterAccountName').innerHTML = 'Logout from: ' + store.getState().UserName;
+                document.getElementById('FooterAccountName').setAttribute('href', '/e-commerce/');
+            } else {
+                document.getElementById('FooterAccountName').innerHTML = 'Logout from: ' + store.getState().UserName;
+                document.getElementById('FooterAccountName').setAttribute('href', '/e-commerce/');
+            }
+        }
     }
     render() {
         return(

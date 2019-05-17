@@ -8,7 +8,7 @@ export class DetailsModal extends Component {
     };
     AddToCart(value) {
         for (let i = 0; i < store.getState().Products.length; i++) {
-            if (store.getState().Products[i].title == value) {
+            if (store.getState().Products[i].title === value) {
                 if (store.getState().Cart.includes(store.getState().Products[i])) {
                     alert('Already in your Cart!');
                 } else {

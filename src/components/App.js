@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {ItemCreator} from "./ItemCreator"
+//import {ItemCreator} from "./ItemCreator";
 import RedirectJS from './RedirectJS';
 //import { BrowserRouter as Router, Route, Link, Switch } from  'react-router-dom';
 import { HashRouter as Router, Route, Link, Switch } from  'react-router-dom';
@@ -11,12 +11,6 @@ import {Cart} from './Cart';
 import store from './store';
 import {DetailsModal} from "./DetailsModal";
 import {Login} from './Login';
-let TV = [];
-let Headphones = [];
-let Phones = [];
-let Cameras = [];
-let Watches = [];
-let Kitchen_Appliances = [];
 class App extends Component {
     componentDidMount() {
         store.subscribe(() => this.forceUpdate());
@@ -30,12 +24,12 @@ class App extends Component {
             });
     };
     itemPusher() {
-        TV = [];
-        Headphones = [];
-        Phones = [];
-        Cameras = [];
-        Watches = [];
-        Kitchen_Appliances = [];
+        let TV = [];
+        let Headphones = [];
+        let Phones = [];
+        let Cameras = [];
+        let Watches = [];
+        let Kitchen_Appliances = [];
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].category === 'tv') {
                 TV.push(store.getState().Products[i]);
@@ -65,7 +59,6 @@ class App extends Component {
                 }
             }
         }
-        //dispatches
         store.dispatch({type: 'TV', TV: TV });
         store.dispatch({type: 'Headphones', Headphones: Headphones });
         store.dispatch({type: 'Phones', Phones: Phones });
@@ -100,7 +93,7 @@ class App extends Component {
                             <Route exact path="/" render={() => (<div className="Items"><Login /></div>)}/>
                             <Route exact path="/#/e-commerce/" render={() => (<div className="Items"><Login /></div>)}/>
                             <Route exact path="/e-commerce/" render={() => (<div className="Items"><Login /></div>)}/>
-                            <Route exact path="/e-commerce/Store" render={() => (<div className="Items"><ItemCreator /></div>)}/>
+                            <Route exact path="/e-commerce/Store" render={() => (<div className="Items"><ItemFilter /></div>)}/>
                             <Route exact path="/e-commerce/Category/TV" render={() => (<div className="Items"><ItemFilter /></div>)} />
                             <Route exact path="/e-commerce/Category/Headphones" render={() => (<div className="Items"><ItemFilter /></div>)} />
                             <Route exact path="/e-commerce/Category/Phones" render={() => (<div className="Items"><ItemFilter /></div>)} />
@@ -114,7 +107,7 @@ class App extends Component {
                             <Route exact path="/e-commerce/Category/Watches/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
                             <Route exact path="/e-commerce/Category/Kitchen_Appliances/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
                             <Route exact path="/e-commerce/Cart"  render={() => (<div className="Items"><Cart /> </div>)} />
-                            <Route  path="/e-commerce/Store/Details" render={() => (<div className="Items"><ItemCreator /><DetailsModal /></div>)} />
+                            <Route  path="/e-commerce/Store/Details" render={() => (<div className="Items"><ItemFilter /><DetailsModal /></div>)} />
                             <Route path="/RedirectJS" component={RedirectJS} />
                             <Route render={() => (<div><RedirectJS /></div>)} />
                         </Switch>
