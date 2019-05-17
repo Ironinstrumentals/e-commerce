@@ -19,8 +19,9 @@ export class Cart extends Component {
         this.forceUpdate();
     };
     Checkout() {
-        alert('Checkout Feature Coming Soon!');
+        console.log('Checkout Feature Coming Soon!');
         store.getState().Cart = [];
+        console.log('Cart Cleared');
     }
     calibratePrice(price, value) {
         if (isNaN(price * value)) {
