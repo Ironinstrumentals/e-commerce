@@ -20,11 +20,11 @@ export class ItemFilter extends Component {
         for (let i = 0; i < store.getState().Products.length; i++) {
             if (store.getState().Products[i].title === value) {
                 if (store.getState().Cart.includes(store.getState().Products[i])) {
-                    alert('Already in your Cart!');
+                    console.log('Already in your Cart!');
                 } else {
                     if (document.getElementById('FooterAccountName').innerHTML !== 'Login') {
                         store.dispatch({type: 'ADD_TO_CART', product: store.getState().Products[i]});
-                        alert('Added "'+ store.getState().Products[i].title +'" To the Cart!')
+                        console.log('Added "'+ store.getState().Products[i].title +'" To the Cart!')
                     } else {
                         if (document.getElementById('FooterAccountName').innerHTML === 'Login') {
                             document.location.href = '/e-commerce/';
